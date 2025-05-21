@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart - ShopWithLav</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <h1 class="logo">ShopWithLav</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Your Shopping Cart</h2>
+      <div id="cart-container">
+         <ul id="cart-items"></ul>
+        <p id="empty-cart-msg">Your cart is empty.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 ShopWithLav. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Call the built-in logic in script.js after DOM loads
+    window.addEventListener("DOMContentLoaded", () => {
+      const cartItems = document.getElementById("cart-items");
+      const emptyMsg = document.getElementById("empty-cart-msg");
+
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      if (cart.length > 0) {
+        emptyMsg.style.display = "none";
+        cart.forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = `${item.name} x ${item.qty} - $${(item.price * item.qty).toFixed(2)}`;
+          cartItems.appendChild(li);
+        });
+      } else {
+        emptyMsg.style.display = "block";
+      }
+    });
+  </script>
+</body>
+</html>
+<!-- Compare this snippet from script.js: -->
