@@ -1,0 +1,11 @@
+ShopWithLav/
+├── index.html
+├── products.html
+├── cart.html
+├── checkout.html
+├── style.css
+├── script.js
+└── assets/
+├── headphones.avif
+├── watch2.jpeg
+└── blue.jpeg
